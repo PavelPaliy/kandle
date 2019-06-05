@@ -1,0 +1,178 @@
+<!DOCTYPE HTML>
+{% load staticfiles %}
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Kandle</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}" />
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+
+	<div id="page">
+
+		<div class="page-inner">
+			<nav class="gtco-nav" role="navigation">
+				<div class="gtco-container">
+
+					<div class="row">
+						<div class="col-sm-4 col-xs-12 logotype-kandle">
+							<svg viewBox="0 0 300 100">
+						  <symbol id="s-text">
+						    <text text-anchor="middle" x="50%" y="50%" dy=".35em">Kandle</text>
+						  </symbol>
+
+						  <use class="text" xlink:href="#s-text"></use>
+						  <use class="text" xlink:href="#s-text"></use>
+						  <use class="text" xlink:href="#s-text"></use>
+						  <use class="text" xlink:href="#s-text"></use>
+						  <use class="text" xlink:href="#s-text"></use>
+						</svg>
+						</div>
+
+						<div class="col-xs-8 text-right menu-1">
+							<ul>
+								<li class="btn-cta"><a href="/create"><span>Get started</span></a></li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+			</nav>
+
+			<header id="gtco-header" class="gtco-cover" role="banner" style="background-image: url(../static/img/bg.jpg)">
+				<div class="overlay"></div>
+				<div class="gtco-container">
+					<div class="row">
+						<div class="col-md-12 col-md-offset-0 text-left">
+
+
+							<div class="row row-mt-15em">
+								<div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp">
+									<span class="intro-text-small">Welcome to Kandle</span>
+									<h1>The simple way to decide on dates, places & more.</h1>
+								</div>
+                                {% if user.is_authenticated %}
+{#                                    чет придумать#}
+                                {% else %}
+								<div class="col-md-4 col-md-push-1 animate-box" data-animate-effect="fadeInRight">
+									<div class="form-wrap">
+										<div class="tab">
+{#											<ul class="tab-menu">#}
+{#												<li class="active gtco-first"><a href="#" data-tab="signup">Sign up</a></li>#}
+{#												<li class="active gtco-first gtco-second"><a href="#" data-tab="login">Login</a></li>#}
+{#											</ul>#}
+											<div class="tab-content">
+{#												<div class="tab-content-inner active" data-content="signup">#}
+{#													<form action="#">#}
+{#														<div class="row form-group">#}
+{#															<div class="col-md-12">#}
+{#																<label for="username">Username or Email</label>#}
+{#																<input type="text" class="form-control" id="dusername">#}
+{#															</div>#}
+{#														</div>#}
+{#														<div class="row form-group">#}
+{#															<div class="col-md-12">#}
+{#																<label for="password">Password</label>#}
+{#																<input type="password" class="form-control" id="password">#}
+{#															</div>#}
+{#														</div>#}
+{#														<div class="row form-group">#}
+{#															<div class="col-md-12">#}
+{#																<label for="password2">Repeat Password</label>#}
+{#																<input type="password" class="form-control" id="password2">#}
+{#															</div>#}
+{#														</div>#}
+{##}
+{#														<div class="row form-group">#}
+{#															<div class="col-md-12">#}
+{#																<input type="submit" class="btn btn-primary" value="Sign up">#}
+{#															</div>#}
+{#														</div>#}
+{#													</form>#}
+{#												</div>#}
+
+												<div class="tab-content-inner active" data-content="login">
+													<form id="form" method="POST" >
+                                                         {% csrf_token %}
+														<div class="row form-group">
+															<div class="col-md-12">
+																<label for={{ form.username.id_for_label }}>Username or Email</label>
+                                                                {{ form.username }}
+{#                                                                <input type="text" class="form-control" id="username">#}
+															</div>
+														</div>
+														<div class="row form-group">
+															<div class="col-md-12">
+																<label for={{ form.password.id_for_label }}>Password</label>
+                                                                {{ form.password }}
+{#																<input type="password" class="form-control" id="password">#}
+															</div>
+														</div>
+                                                        <div class="has-error">
+                                                            {{ login_message }}
+                                                        </div>
+														<div class="row form-group">
+															<div class="col-md-12 col-centered text-center">
+																<input type="submit" class="btn btn-primary btn_index" value="Login" >
+															</div>
+                                                            <span style="margin-left: 47%;
+    font-weight: bold;">or</span>
+                                                            <div class="col-md-12 col-centered text-center">
+																<a class="btn btn-default btn_index" href="/sign_up" role="button">Sign Up</a>
+															</div>
+														</div>
+													</form>
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+                                {% endif %}
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+			</header>
+
+			<footer id="gtco-footer" role="contentinfo">
+				<div class="gtco-container">
+
+					<div class="row copyright">
+						<div class="col-md-12">
+							<p class="pull-left">
+								<small class="block">&copy; 2018  All Rights Reserved.</small>
+							</p>
+							<p class="pull-right">
+								<ul class="gtco-social-icons pull-right">
+									<li><a href="#"><i class="icon-facebook"></i></a></li>
+									<li><a href="#"><i class="icon-linkedin"></i></a></li>
+								</ul>
+							</p>
+						</div>
+					</div>
+
+				</div>
+			</footer>
+		</div>
+
+	</div>
+
+
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>
